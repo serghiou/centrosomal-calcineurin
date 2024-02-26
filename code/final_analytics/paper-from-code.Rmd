@@ -40,7 +40,6 @@ Configurations.
 UPDATE_DOCKERFILE <- TRUE
 ```
 
-
 ------------------------------------------------------------------------
 
 # Read
@@ -49,7 +48,6 @@ UPDATE_DOCKERFILE <- TRUE
 # Read all csv files
 membrane_ <- read_csv(file.path(src_dirname, src_basename))
 ```
-
 
 ------------------------------------------------------------------------
 
@@ -60,7 +58,6 @@ Create file.
 ```{r}
 membrane <- membrane_
 ```
-
 
 ------------------------------------------------------------------------
 
@@ -86,7 +83,6 @@ mean_diff <- wide %>% pull(diffs) %>% mean
 # Print mean
 sprintf("Mean intensity difference in Channel 1 vs. 2 = %.1f units", mean_diff)
 ```
-
 
 ------------------------------------------------------------------------
 
@@ -142,7 +138,6 @@ to <- file.path(dst_dirname, "figure_1b.tif")
 file.copy(from, to)
 ```
 
-
 ------------------------------------------------------------------------
 
 # Tables
@@ -150,7 +145,6 @@ file.copy(from, to)
 ```{r}
 
 ```
-
 
 ------------------------------------------------------------------------
 
@@ -160,12 +154,13 @@ file.copy(from, to)
 
 ```{r}
 # Clean up project of libraries not in use
-renv::clean()
+# (use prompt = FALSE to avoid the interactive session)
+# (packages can only be removed in interactive mode b/c this is destructive)
+renv::clean(prompt = TRUE)
 
 # Update lock file with new packages
 renv::snapshot()
 ```
-
 
 ## Containerization
 
@@ -181,11 +176,9 @@ renv::snapshot()
 # print(my_dockerfile)
 ```
 
-
 ------------------------------------------------------------------------
 
 # Documentation
-
 
 ## Session info
 
