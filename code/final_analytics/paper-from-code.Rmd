@@ -150,6 +150,19 @@ file.copy(from, to)
 
 # Reproducibility
 
+## Linting and styling
+
+```{r}
+# Style current file
+styler::style_file(
+  path = rstudioapi::getSourceEditorContext()$path,
+  style = styler::tidyverse_style
+)
+
+# Lint current file
+lintr::lint(rstudioapi::getSourceEditorContext()$path)
+```
+
 ## Dependencies
 
 ```{r}
