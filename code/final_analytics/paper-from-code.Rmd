@@ -67,18 +67,20 @@ Compute difference between channels.
 
 ```{r}
 # Create channel columns and difference
-wide <- 
-  membrane %>% 
+wide <-
+  membrane %>%
   pivot_wider(
     id_cols = condition,
     names_from = channel,
     names_glue = "channel_{channel}",
     values_from = mean_intensity
-  ) %>% 
+  ) %>%
   mutate(diffs = channel_1 - channel_2)
 
 # Compute mean in differences
-mean_diff <- wide %>% pull(diffs) %>% mean
+mean_diff <- wide %>%
+  pull(diffs) %>%
+  mean()
 
 # Print mean
 sprintf("Mean intensity difference in Channel 1 vs. 2 = %.1f units", mean_diff)
@@ -95,8 +97,8 @@ sprintf("Mean intensity difference in Channel 1 vs. 2 = %.1f units", mean_diff)
 ```{r}
 # Plot
 membrane_histogram <-
-  membrane %>% 
-  mutate(channel = paste("Channel", channel)) %>% 
+  membrane %>%
+  mutate(channel = paste("Channel", channel)) %>%
   ggplot(aes(x = mean_intensity, fill = channel, color = channel)) +
   geom_histogram(alpha = 0.7) +
   facet_wrap(vars(condition)) +
@@ -143,7 +145,6 @@ file.copy(from, to)
 # Tables
 
 ```{r}
-
 ```
 
 ------------------------------------------------------------------------
@@ -185,7 +186,7 @@ renv::snapshot()
 #   # Write file
 #   # write(my_dockerfile, file = "~/Dockerfile")
 # }
-# 
+#
 # print(my_dockerfile)
 ```
 
@@ -196,11 +197,15 @@ renv::snapshot()
 ## Session info
 
 ```{r}
-print(sessionInfo(), locale = F)
+print(sessionInfo(), locale = FALSE)
 ```
 
 ## References
 
 ```{r}
-(.packages()) %>% sort %>% lapply(citation) %>% lapply(c) %>% unique
+(.packages()) %>%
+  sort() %>%
+  lapply(citation) %>%
+  lapply(c) %>%
+  unique()
 ```
