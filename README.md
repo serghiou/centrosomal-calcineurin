@@ -18,48 +18,49 @@ Combining resources across OSF and GitHub should yield the following structure.
 ├── README.md           <- Describes the project and orchestration (how to run)
 │
 ├── data
-│   ├── raw             <- The original, immutable data dump.
-│   │   └── <experiment>
-│   │       └── <conditions/replicate>
-│   │           └── <date as YYYY-MM-DD>
-│   ├── external        <- Data from third party sources (e.g., US Census).
-│   │   └── <provider>
+│   ├── 0_external        <- Data from third party sources (e.g., US Census).
+│   │   └── <source>
 │   │       └── <date as YYYY-MM-DD>
-│   ├── intermediate       <- Intermediate data that has been standardized, formatted, deduped, etc.
+│   ├── 1_raw             <- The original, immutable data dump.
 │   │   └── <experiment>
 │   │       └── <conditions/replicate>
 │   │           └── <date as YYYY-MM-DD>
-│   ├── extracted       <- Tabular data extracted from conformed image data.
+│   ├── 2_processed       <- Intermediate data that has been standardized, formatted, deduped, etc.
 │   │   └── <experiment>
 │   │       └── <conditions/replicate>
 │   │           └── <date as YYYY-MM-DD>
-│   └── tidy            <- The final, canonical datasets for analysis. Includes engineered features.
+│   │
+│   └── 3_tidy            <- The final, canonical datasets for analysis. Includes engineered features.
 │       └── <experiment>
 │
 ├── code
-│   ├── data_processing <- Code to process data from raw all the way to tidy.
+│   ├── data_processing  <- Code to process data from raw all the way to tidy.
 │   │   └── <experiment>
-│   ├── draft           <- Code that operates on tidy data for draft data analytics and visualizations.
-│   └── final           <- Code that operates on tidy data to produce text, figures and tables as they appear in pubilcations.
+│   │
+│   ├── draft_analyses   <- Code that operates on tidy data for draft data analytics and visualizations.
+│   └── final_analyses   <- Code that operates on tidy data to produce text, figures and tables as they appear in pubilcations.
 │
 ├── output
-│   ├── draft           <- Tables and figures from the draft analytics
+│   ├── draft_analyses  <- Tables and figures from the draft analytics
 │   │   └── <experiment>
-│   └── final           <- Tables and figures from the final analytics
+│   │
+│   └── final_analyses  <- Tables and figures from the final analytics
 │
 ├── docs                <- Data dictionaries, manuals, and all other explanatory materials.
 │
-├── requirements.txt    <- The requirements file for reproducing the analysis environment, e.g.
-│                          generated with `pip freeze > requirements.txt`
+├── Dockerfile          <- Use docker build to build Docker container based on this file
+├── deps.R              <- Import packages not used elsewhere to help renv
+├── renv.lock           <- Lockfile with all dependencies managed by renv
+├── renv                <- Package dependency management directory with renv
 │
-├── publication                      
-│   └── journal                      <- Journal that this was submitted to
-│       └── submission-1_YYYY-MM-DD  <- All materials of submission 1
-│           ├── docs                 <- All documents for submission
-│           ├── figures              <- All figures for submission
-│           └── tables               <- All tables for submission
-│
-└── packrat             <- Package dependency management with packrat
+└── publication                      
+    └── journal                      <- Journal that this was submitted to
+        └── submission-1_YYYY-MM-DD  <- All materials of submission 1
+            ├── docs                 <- All documents for submission
+            ├── figures              <- All figures for submission
+            └── tables               <- All tables for submission
+
+
 ```
 
 ## Code structure
