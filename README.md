@@ -86,9 +86,18 @@ All code follows the following structure.
 │   └── Compute - <Analysis type>   <- Compute descriptive statistics, visualize, analyze.
 │       └── <Analysis subtype>      <- Analysis subtype (if applicable; e.g., histograms).
 │
-└── Write
-    ├── Conform         <- Conform data to a format appropriate for storage.
-    └── Export          <- Write/push/sink data to a storage service.
+├── Write
+│   ├── Conform         <- Conform data to a format appropriate for storage.
+│   └── Export          <- Write/push/sink data to a storage service.
+│
+├── Reproducibility
+│   ├── Linting and styling
+│   ├── Dependency management
+│   └── Containerization
+│
+└── Documentation
+    ├── Session info
+    └── References
 ```
 
 ## How to get the data
