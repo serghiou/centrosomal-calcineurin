@@ -34,11 +34,11 @@ Combining resources across OSF and GitHub should yield the following structure.
 │       └── <experiment>
 │
 ├── code
-│   ├── data_processing  <- Code to process data from raw all the way to tidy.
+│   ├── data-processing  <- Code to process data from raw all the way to tidy.
 │   │   └── <experiment>
 │   │
-│   ├── draft_analyses   <- Code that operates on tidy data for draft data analytics and visualizations.
-│   └── final_analyses   <- Code that operates on tidy data to produce text, figures and tables as they appear in pubilcations.
+│   ├── draft-analyses   <- Code that operates on tidy data for draft data analytics and visualizations.
+│   └── final-analyses   <- Code that operates on tidy data to produce text, figures and tables as they appear in pubilcations.
 │
 ├── output
 │   ├── draft_analyses  <- Tables and figures from the draft analytics
